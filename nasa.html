@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post a Story</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #333;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Post Your Story</h1>
+
+  <form id="storyForm">
+    <label for="title">Story Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="story">Your Story:</label>
+    <textarea id="story" name="story" rows="8" required></textarea>
+
+    <button type="submit">Post Story</button>
+  </form>
+
+  <div id="postedStory" style="margin-top: 20px;"></div>
+
+  <script>
+    document.getElementById('storyForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get form values
+      const title = document.getElementById('title').value;
+      const story = document.getElementById('story').value;
+
+      // Display the posted story
+      document.getElementById('postedStory').innerHTML = `
+        <h2>${title}</h2>
+        <p>${story}</p>
+      `;
+
+      // Clear form
+      document.getElementById('storyForm').reset();
+    });
+  </script>
+
+</body>
+</html>
